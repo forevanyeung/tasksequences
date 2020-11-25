@@ -65,6 +65,9 @@ export default {
         runpowershell: defineAsyncComponent( () => import('./steps/runpowershell.properties') ),
         dynamicvariables: defineAsyncComponent( () => import('./steps/dynamicvariables.properties') ),
         joindomain: defineAsyncComponent( () => import('./steps/joindomain.properties')),
+        networkfolder: defineAsyncComponent( () => import('./steps/networkfolder.properties')),
+        restart: defineAsyncComponent( () => import('./steps/restart.properties')),
+        tasksequencevariable: defineAsyncComponent( () => import('./steps/tasksequencevariable.properties'))
     },
 }; 
 </script>
