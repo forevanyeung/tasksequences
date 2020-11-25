@@ -1,0 +1,9 @@
+﻿<LibraryDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Properties>
+    <Property Name="AUTHORING_SCOPE" Value="ScopeId_BB614B4D-843E-46E6-B4B0-2017EA2812ED" />
+  </Properties>
+  <Contents />
+  <EntryObjects>
+    <Object Path="SMS_TaskSequencePackage.PackageID='RSC002A6'" Type="SMS_TaskSequencePackage" />
+  </EntryObjects>
+</LibraryDocument>
