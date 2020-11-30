@@ -27,121 +27,19 @@ export default {
         return {
             steplist_data: [
                 {
-                    id: 1,
-                    name: 'General',
-                    type: 'group',
-                    children: [
-                        {
-                            id: 2,
-                            name: 'Run Command Line',
-                            type: 'runcommand',
-                        },
-                        {
-                            id: 3,
-                            name: 'Run PowerShell Script',
-                            type: 'runpowershell',
-                        },
-                        {
-                            id: 4,
-                            name: 'Set Dynamic Variables',
-                            type: 'dynamicvariables',
-                        },
-                        {
-                            id: 5,
-                            name: 'Join Domain or Workgroup',
-                            type: 'joindomain',
-                        },
-                        {
-                            id: 10,
-                            name: 'Connect to Network Folder',
-                            type: 'networkfolder',
-                        },
-                        {
-                            id: 11,
-                            name: 'Restart Computer',
-                            type: 'restart',
-                        },
-                        {
-                            id: 12,
-                            name: 'Set Task Sequence Variable',
-                            type: 'tasksequencevariable',
-                        },
-                        {
-                            id: 13,
-                            name: 'Check Readiness',
-                            type: 'checkreadiness',
-                        },
-                        {
-                            id: 14,
-                            name: 'Run Task Sequence',
-                            type: 'runtaskseqeunce',
-                        },
-                    ]
+                    id: 2,
+                    name: 'Run Command Line',
+                    type: 'runcommand',
                 },
                 {
-                    id: 6,
-                    name: 'Software',
-                    children: [
-                        {
-                            id: 7,
-                            name: 'Install Application'
-                        },
-                        {
-                            id: 8,
-                            name: 'Install Software'
-                        },
-                        {
-                            id: 15,
-                            name: 'Install Software Updates'
-                        },
-                        {
-                            id: 16,
-                            name: 'Download Package Content'
-                        },
-                    ]
+                    id: 3,
+                    name: 'Run PowerShell Script',
+                    type: 'runpowershell',
                 },
                 {
-                    id: 17,
-                    name: 'Disks',
-                    children: [
-                        {
-                            id: 18,
-                            name: 'Format and Partition Disk'
-                        },
-                        {
-                            id: 19,
-                            name: 'Convert Disk to Dynamic'
-                        },
-                        {
-                            id: 20,
-                            name: 'Enable BitLocker'
-                        },
-                        {
-                            id: 21,
-                            name: 'Disable BitLocker'
-                        },
-                        {
-                            id: 22,
-                            name: 'Pre-provision BitLocker'
-                        },
-                    ]
-                },
-                {
-                    id: 9,
-                    name: 'Disabled Group',
-                    disabled: true,
-                    children: [
-                        {
-                            id: 23,
-                            name: 'Sub-Group',
-                            children: [
-                                {
-                                    id: 24,
-                                    name: 'Sub-Sub-Group'
-                                }
-                            ]
-                        }
-                    ]
+                    id: 4,
+                    name: 'Set Dynamic Variables',
+                    type: 'dynamicvariables',
                 }
             ]
         }
@@ -166,7 +64,7 @@ export default {
                 }, null);
             }
 
-            const step = search(this.stepid, this.steplist_data,)
+            const step = search(this.stepid, this.steplist_data)
 
             return step?.type ?? 'notype'
         }
