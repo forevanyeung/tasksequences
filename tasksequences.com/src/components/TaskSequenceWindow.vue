@@ -27,23 +27,7 @@ export default {
     name: 'TaskSequenceWindow',
     data() {
         return {
-            steplist_data: [
-                {
-                    id: 2,
-                    name: 'Run Command Line',
-                    type: 'runcommand',
-                },
-                {
-                    id: 3,
-                    name: 'Run PowerShell Script',
-                    type: 'runpowershell',
-                },
-                {
-                    id: 4,
-                    name: 'Set Dynamic Variables',
-                    type: 'dynamicvariables',
-                }
-            ]
+            steplist_data: []
         }
     },
     props: {
@@ -56,7 +40,7 @@ export default {
         DynamicStepLoader,
     },
     mounted() {
-        let githubURL = 'https://raw.githubusercontent.com/forevanyeung/tasksequences/tspackage-export/tasksequence1/SMS_TaskSequencePackage/RSC002A6/extracted-woref.xml'
+        let githubURL = 'https://raw.githubusercontent.com/forevanyeung/tasksequences/tspackage-export/tasksequence1/SMS_TaskSequencePackage/RSC002A6/extracted.xml'
 
         let parser = new xml2js.Parser({
             preserveChildrenOrder: true,
@@ -68,11 +52,15 @@ export default {
                 // console.log(response.data)
 
                 parser.parseStringPromise(response.data).then( result => {
-                    this.steplist_data = result.sequence.$$
+                    let sequence = result.sequence.$$.filter( obj => {
+                        return obj['#name'] === 'group' ||
+                               obj['#name'] === 'step' ||
+                               obj['#name'] === 'subtasksequence'
+                    })
 
-                    // show full object in console
-                    // console.log(util.inspect(xmlNodes, false, 2))
-                    console.log(this.steplist_data)
+                    console.log(sequence)
+
+                    this.steplist_data = sequence
                 })
                 .catch( error => {
                     console.log(error);
