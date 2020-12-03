@@ -49,8 +49,6 @@ export default {
 
         axios.get(githubURL)
             .then(response => {
-                // console.log(response.data)
-
                 parser.parseStringPromise(response.data).then( result => {
                     let sequence = result.sequence.$$.filter( obj => {
                         return obj['#name'] === 'group' ||
@@ -61,8 +59,10 @@ export default {
                     function assignId(node, i=0) {
                         node.forEach(n => {
                             n.id = i
-                            
+
                             if(n['#name'] === 'group' && n.$$) {
+                                n.$.type = 'group' //doesn't belong here, but its efficient
+
                                 assignId(n.$$, i+1)
                                 i = i + n.$$.length
                             }
@@ -90,13 +90,14 @@ export default {
                     // console.log(item)
                     if (a) return a;
                     if (item.id == id) return item;
-                    if (item.children) return search(id, item.children);
+                    if (item.$$) return search(id, item.$$);
                 }, null);
             }
 
             const step = search(this.stepid, this.steplist_data)
 
-            return step?.type ?? 'notype'
+            console.log(step?.$.type ?? 'notype')
+            return step?.$.type ?? 'notype'
         }
     }
 }
