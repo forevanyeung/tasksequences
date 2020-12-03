@@ -1,9 +1,12 @@
 <template>
-    <p>Task Sequence type not found</p>
+    <p>Task Sequence type not found: {{type}}</p>
 </template>
 
 <script>
 export default {
-    name: 'notype'
+    name: 'notype',
+    props: [
+        'type'
+    ]
 }
 </script>

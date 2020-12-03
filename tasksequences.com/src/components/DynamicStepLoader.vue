@@ -1,7 +1,8 @@
 <template>
     <!-- <dynamic-step-component /> -->
 
-    <component :is="getComponentFromType" />
+    <typenotfound v-if="getComponentFromType=='typenotfound'" :type="type" />
+    <component v-else :is="getComponentFromType" />
 </template>
 
 <script> 
@@ -9,38 +10,12 @@ import { defineAsyncComponent } from 'vue';
 
 export default { 
     name: "dynamic-step-loader",
-    data() {
-        return {
-            step_catalog: {
-                group: 'Group',
-                runcommand: 'Run Command Line',
-                runpowershell: 'Run PowerShell Script',
-                dynamicvariable: 'Set Dynamic Variables',
-                joindomain: 'Join Domain or Workgroup',
-                networkfolder: 'Connect to Network Folder',
-                restart: 'Restart Computer',
-                tasksequencevariable: 'Set Task Sequence Variables',
-                checkreadiness: 'Check Readiness',
-                runtasksequence: 'Run Task Sequence',
-                installapplication: 'Install Application',
-                installsoftware: 'Install Software',
-                installupdates: 'Install Software Updates',
-                downloadpackage: 'Download Package Contents',
-                formatdisk: 'Format and Partition Disk',
-                convertdynamic: 'Convert Disk to Dynamic',
-                enablebitlocker: 'Enable BitLocker',
-                disablebitlocker: 'Disable BitLocker',
-                provisionbitlocker: 'Pre-provision BitLocker',
-            },
-            testtype: 'formatdisk.properties'
-        }
-    },
     computed: {
         getComponentFromType() {
             if(this.$options.components[this.type]) {
                 return this.type
             } else {
-                return '_typenotfound'
+                return 'typenotfound'
             }
         }
     },
@@ -58,16 +33,16 @@ export default {
         //     // loader: () => import(`./steps/group.properties.vue`)
         // }),
 
-        _typenotfound: defineAsyncComponent( () => import('./steps/_notype') ),
+        typenotfound: defineAsyncComponent( () => import('./steps/_notype') ),
         group: defineAsyncComponent( () => import('./steps/group.properties') ),
-        formatdisk: defineAsyncComponent( () => import('./steps/formatdisk.properties') ),
-        runcommand: defineAsyncComponent( () => import('./steps/runcommand.properties') ),
-        runpowershell: defineAsyncComponent( () => import('./steps/runpowershell.properties') ),
-        dynamicvariables: defineAsyncComponent( () => import('./steps/dynamicvariables.properties') ),
-        joindomain: defineAsyncComponent( () => import('./steps/joindomain.properties')),
-        networkfolder: defineAsyncComponent( () => import('./steps/networkfolder.properties')),
-        restart: defineAsyncComponent( () => import('./steps/restart.properties')),
-        tasksequencevariable: defineAsyncComponent( () => import('./steps/tasksequencevariable.properties'))
+        SMS_TaskSequence_PartitionDiskAction: defineAsyncComponent( () => import('./steps/formatdisk.properties') ),
+        SMS_TaskSequence_RunCommandLineAction: defineAsyncComponent( () => import('./steps/runcommand.properties') ),
+        SMS_TaskSequence_RunPowerShellScriptAction: defineAsyncComponent( () => import('./steps/runpowershell.properties') ),
+        SMS_TaskSequence_SetDynamicVariablesAction: defineAsyncComponent( () => import('./steps/dynamicvariables.properties') ),
+        SMS_TaskSequence_JoinDomainWorkgroupAction: defineAsyncComponent( () => import('./steps/joindomain.properties')),
+        SMS_TaskSequence_ConnectNetworkFolderAction: defineAsyncComponent( () => import('./steps/networkfolder.properties')),
+        SMS_TaskSequence_RebootAction: defineAsyncComponent( () => import('./steps/restart.properties')),
+        SMS_TaskSequence_SetVariableAction: defineAsyncComponent( () => import('./steps/tasksequencevariable.properties'))
     },
 }; 
 </script>
