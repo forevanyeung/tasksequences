@@ -58,9 +58,22 @@ export default {
                                obj['#name'] === 'subtasksequence'
                     })
 
-                    console.log(sequence)
+                    function assignId(node, i=0) {
+                        node.forEach(n => {
+                            n.id = i
+                            
+                            if(n['#name'] === 'group' && n.$$) {
+                                assignId(n.$$, i+1)
+                                i = i + n.$$.length
+                            }
+                            
+                            i++
+                        })
 
-                    this.steplist_data = sequence
+                        return node
+                    }
+
+                    this.steplist_data = assignId(sequence)
                 })
                 .catch( error => {
                     console.log(error);
