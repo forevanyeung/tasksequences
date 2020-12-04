@@ -10,7 +10,7 @@
 
             <div class="content">
                 <ul>
-                    <dynamic-step-loader :type="currentstep" />
+                    <dynamic-step-loader :type="currentstep" v-if="stepid" />
                 </ul>
             </div>
         </div>
@@ -27,19 +27,22 @@ export default {
     name: 'TaskSequenceWindow',
     data() {
         return {
-            steplist_data: []
+            steplist_data: [],
         }
     },
     props: {
         tasksequenceid: String || Number,
         stepid: String || Number,
-        // steps: Array
     },
     components: {
         StepList,
         DynamicStepLoader,
     },
-    mounted() {
+    created() {
+        if(!this.stepid) {
+            this.$router.replace('/' + this.$route.params.tasksequenceid + '/0')
+        }
+
         let githubURL = 'https://raw.githubusercontent.com/forevanyeung/tasksequences/tspackage-export/tasksequence1/SMS_TaskSequencePackage/RSC002A6/extracted.xml'
 
         let parser = new xml2js.Parser({
@@ -96,7 +99,6 @@ export default {
 
             const step = search(this.stepid, this.steplist_data)
 
-            console.log(step?.$.type ?? 'notype')
             return step?.$.type ?? 'notype'
         }
     }
