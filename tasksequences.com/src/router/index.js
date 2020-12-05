@@ -8,6 +8,14 @@ const routes = [
     //     name: 'Home',
     //     component: Home
     // },
+
+    // change to slug path?
+    // /t/best-sequence-ever-2342/install-all-the-apps-23
+    // /t/best-sequence-ever-2342/23
+    // /t/2342/install-all-the-apps-23
+    // /t/2342/23
+    // router next is still in beta so this is broken
+
     {
         path: '/:tasksequenceid/',
         name: 'TSWindow',
