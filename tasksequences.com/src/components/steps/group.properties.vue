@@ -1,5 +1,5 @@
 <template>
-    <CommonProp :type="stepdata.type" :name="stepdata.name" :description="stepdata.description" />
+    <CommonProp type="Group" :name="stepdata.name" :description="stepdata.description" />
     <span>No settings are required for this action.</span>
 </template>
 

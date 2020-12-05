@@ -1,5 +1,5 @@
 <template>
-    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description" />
+    <common-properties type="Set Dynamic Variables" :name="stepdata.name" :description="stepdata.description" />
 
     <select name="cars" id="cars" multiple>
         <option value="volvo">Volvo</option>

@@ -6,12 +6,12 @@
 
     <li class="common">
         <label for="name" class="short">Name:</label>
-        <input type="text" id="name" name="name" :value="name" />
+        <input type="text" id="name" name="name" :value="name" readonly />
     </li>
 
     <li class="common">
         <label for="description" class="short">Description:</label>
-        <input type="text" id="description" name="description" :value="description" />
+        <input type="text" id="description" name="description" :value="description" readonly />
     </li>
 
     <hr />

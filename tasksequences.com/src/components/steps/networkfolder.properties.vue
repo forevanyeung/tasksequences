@@ -1,5 +1,5 @@
 <template>
-    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description"/>
+    <common-properties type="Connect to Network Folder" :name="stepdata.name" :description="stepdata.description"/>
 
     <li>
         <label class="short">Path:</label>

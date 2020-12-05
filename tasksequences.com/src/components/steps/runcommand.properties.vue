@@ -1,5 +1,5 @@
 <template>
-    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description" />
+    <common-properties type="Run Command Line" :name="stepdata.name" :description="stepdata.description" />
 
     <li>
         <label for="commandline">Command Line:</label> <br />

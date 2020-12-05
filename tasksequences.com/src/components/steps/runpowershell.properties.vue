@@ -1,5 +1,5 @@
 <template>
-    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description" />
+    <common-properties type="Run PowerShell Script" :name="stepdata.name" :description="stepdata.description" />
 
     <li>
         <input type="radio" name="scriptsource"/>

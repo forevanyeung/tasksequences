@@ -1,5 +1,5 @@
 <template>
-    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description"/>
+    <common-properties type="Set Task Sequence Variable" :name="stepdata.name" :description="stepdata.description"/>
 
     
 </template>

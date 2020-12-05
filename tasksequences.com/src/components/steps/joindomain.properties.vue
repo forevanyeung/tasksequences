@@ -1,5 +1,5 @@
 <template>
-    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description" />
+    <common-properties type="Join Domain or Workgroup" :name="stepdata.name" :description="stepdata.description" />
 
     <p>Enter the information necessary to join a domain or workgroup.</p>
 

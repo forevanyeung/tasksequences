@@ -1,5 +1,5 @@
 <template>
-    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description"/>
+    <common-properties type="Restart Computer" :name="stepdata.name" :description="stepdata.description"/>
 
     <p>Specify what to run after restart</p>
 
