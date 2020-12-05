@@ -1,5 +1,5 @@
 <template>
-    <p>Task Sequence type not found: {{ stepdata.type }}</p>
+    <p>Step template not available: {{ stepdata.type }}</p>
     <p>{{ stepdata.variables }}</p>
 </template>
 
