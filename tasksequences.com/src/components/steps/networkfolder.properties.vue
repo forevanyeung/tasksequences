@@ -1,5 +1,5 @@
 <template>
-    <common-properties />
+    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description"/>
 
     <li>
         <label class="short">Path:</label>
@@ -28,6 +28,9 @@ export default {
     name: 'NetworkFolder',
     components: {
         commonProperties
+    },
+    props: {
+        stepdata: Object
     }
 }
 </script>

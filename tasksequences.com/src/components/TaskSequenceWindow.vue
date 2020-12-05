@@ -10,7 +10,7 @@
 
             <div class="content">
                 <ul>
-                    <dynamic-step-loader :type="currentstep" v-if="stepid" />
+                    <dynamic-step-loader v-if="stepid" :step="currentstep" />
                 </ul>
             </div>
         </div>
@@ -99,7 +99,17 @@ export default {
 
             const step = search(this.stepid, this.steplist_data)
 
-            return step?.$.type ?? 'notype'
+            let stepdata
+            if(step) {
+                stepdata = {
+                    name: step.$.name,
+                    type: step.$.type,
+                    description: step.$.description,
+                    variables: step.$.type === 'group' ? null : step.defaultVarList[0].variable,
+                }
+            }
+            // console.log(stepdata)
+            return stepdata ?? {type: 'notype'}
         }
     }
 }
@@ -128,6 +138,7 @@ export default {
     }
     .step-list {
         min-width: 200px;
+        max-width: 200px;
         background: white;
         border: 1px solid black;
         padding: 5px;

@@ -1,5 +1,5 @@
 <template>
-    <common-properties />
+    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description" />
 
     <li>
         <input type="radio" name="scriptsource"/>
@@ -52,6 +52,9 @@ export default {
     name: 'run-powershell',
     components: {
         CommonProperties
+    },
+    props: {
+        stepdata: Object
     }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <common-properties />
+    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description"/>
 
     
 </template>
@@ -10,6 +10,9 @@ export default {
     name: 'tasksequencevariable',
     components: {
         commonProperties
+    },
+    props: {
+        stepdata: Object
     }
 }
 </script>

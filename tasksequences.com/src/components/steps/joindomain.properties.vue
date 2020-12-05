@@ -1,5 +1,5 @@
 <template>
-    <common-properties />
+    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description" />
 
     <p>Enter the information necessary to join a domain or workgroup.</p>
 
@@ -37,6 +37,9 @@ export default {
     name: 'JoinDomain',
     components: {
         CommonProperties
+    },
+    props: {
+        stepdata: Object
     }
 }
 </script>

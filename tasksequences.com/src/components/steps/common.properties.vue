@@ -1,17 +1,17 @@
 <template>
     <li class="common">
         <label for="type" class="short">Type:</label>
-        <input type="text" id="type" name="type" />
+        <input type="text" id="type" name="type" :value="type" disabled />
     </li>
 
     <li class="common">
         <label for="name" class="short">Name:</label>
-        <input type="text" id="name" name="name" />
+        <input type="text" id="name" name="name" :value="name" />
     </li>
 
     <li class="common">
         <label for="description" class="short">Description:</label>
-        <input type="text" id="description" name="description" />
+        <input type="text" id="description" name="description" :value="description" />
     </li>
 
     <hr />
@@ -19,6 +19,11 @@
 
 <script>
 export default {
-    name: 'CommonProp'
+    name: 'CommonProp',
+    props: [
+        'type',
+        'name',
+        'description'
+    ]
 }
 </script>

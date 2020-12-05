@@ -1,5 +1,5 @@
 <template>
-    <CommonProp />
+    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description" />
 
     <li>
         <label for="commandline">Command Line:</label> <br />
@@ -43,12 +43,15 @@
 </template>
 
 <script>
-import CommonProp from './common.properties.vue'
+import CommonProperties from './common.properties.vue'
 
 export default {
     name: 'RunCommandProp',
     components: {
-        CommonProp
+        CommonProperties
+    },
+    props: {
+        stepdata: Object
     }
 }
 </script>

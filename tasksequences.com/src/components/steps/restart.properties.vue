@@ -1,5 +1,5 @@
 <template>
-    <common-properties />
+    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description"/>
 
     <p>Specify what to run after restart</p>
 
@@ -34,7 +34,10 @@
 <script>
 import commonProperties from './common.properties.vue'
 export default {
-  components: { commonProperties },
-    name: 'restart'
+    name: 'restart',
+    components: { commonProperties },
+    props: {
+        stepdata: Object
+    }
 }
 </script>

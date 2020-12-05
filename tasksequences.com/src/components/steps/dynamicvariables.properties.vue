@@ -1,5 +1,5 @@
 <template>
-    <common-properties />
+    <common-properties :type="stepdata.type" :name="stepdata.name" :description="stepdata.description" />
 
     <select name="cars" id="cars" multiple>
         <option value="volvo">Volvo</option>
@@ -22,6 +22,9 @@ export default {
     name: 'dynamic-variables',
     components: {
         CommonProperties
+    },
+    props: {
+        stepdata: Object
     }
 }
 </script>
