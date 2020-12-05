@@ -3,20 +3,20 @@
 
     <li>
         <label class="short">Path:</label>
-        <input type="text" />
+        <input type="text" :value="stepdata.variables.SMSConnectNetworkFolderPath"/>
         <button type="button">Browse...</button>
     </li>
 
     <li>
         <label class="short">Drive</label>
         <select>
-            <option></option>
+            <option>{{ stepdata.variables.SMSConnectNetworkFolderDriveLetter }}</option>
         </select>
     </li>
 
     <li>
         <label class='short'>Account:</label>
-        <input type="text" />
+        <input type="text" :value="stepdata.variables.SMSConnectNetworkFolderAccount" />
         <button type="button">Set...</button>
     </li>
 </template>

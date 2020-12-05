@@ -4,12 +4,16 @@
     <p>Specify what to run after restart</p>
 
     <li>
-        <input type="radio" />
+        <input type="radio"
+               name="SMSRebootTarget"
+               :checked="stepdata.variables.SMSRebootTarget === 'WinPE'" />
         <label>The boot image assinged to this task sequence</label>
     </li>
 
     <li>
-        <input type="radio" />
+        <input type="radio" 
+               name="SMSRebootTarget"
+               :checked="stepdata.variables.SMSRebootTarget === 'OS'" />
         <label>The current installed default operating system</label>
     </li>
 
@@ -22,12 +26,12 @@
 
     <li>
         <label>Notification message:</label>
-        <textarea></textarea>
+        <textarea>{{ stepdata.variables.SMSRebootMessage }}</textarea>
     </li>
 
     <li>
         <label>Message display time-out (seconds):</label>
-        <input type="number" />
+        <input type="number" :value="stepdata.variables.SMSRebootTimeout" />
     </li>
 </template>
 

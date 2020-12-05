@@ -99,15 +99,30 @@ export default {
 
             const step = search(this.stepid, this.steplist_data)
 
+            const kvVarList = (varlist) => {
+                let exVarList = {}
+                varlist.forEach(v => {
+                    // exVarList[v.$.name] = {
+                    //     v,
+                    //     value: v._
+                    // }
+                    exVarList[v.$.name] = v._
+                })
+                return exVarList
+            }
+
             let stepdata
             if(step) {
                 stepdata = {
                     name: step.$.name,
                     type: step.$.type,
                     description: step.$.description,
-                    variables: step.$.type === 'group' ? null : step.defaultVarList[0].variable,
+                    variables: step.$.type === 'group' ? null : kvVarList(step.defaultVarList[0].variable),
                 }
             }
+
+            
+
             // console.log(stepdata)
             return stepdata ?? {type: 'notype'}
         }

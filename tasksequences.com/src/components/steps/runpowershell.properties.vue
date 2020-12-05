@@ -25,7 +25,7 @@
     </li>
 
     <li>
-        <textarea rows="7"></textarea>
+        <textarea rows="7" v-model="pssourceDecoded"></textarea>
     </li>
 
     <li>
@@ -38,7 +38,7 @@
         <label>PowerShell execution policy:</label>
         <span class="break"></span>
         <select>
-            <option>Bypass</option>
+            <option>{{ stepdata.variables.OSDRunPowerShellScriptExecutionPolicy }}</option>
         </select>
     </li>
 
@@ -55,6 +55,12 @@ export default {
     },
     props: {
         stepdata: Object
+    },
+    computed: {
+        pssourceDecoded() {
+            return decodeURIComponent(escape(window.atob( this.stepdata.variables.OSDRunPowerShellScriptSourceScript )))
+            // return atob(this.stepdata.variables.OSDRunPowerShellScriptSourceScript)
+        }
     }
 }
 </script>
