@@ -58,8 +58,10 @@ export default {
     },
     computed: {
         pssourceDecoded() {
-            return decodeURIComponent(escape(window.atob( this.stepdata.variables.OSDRunPowerShellScriptSourceScript )))
-            // return atob(this.stepdata.variables.OSDRunPowerShellScriptSourceScript)
+            // return this.stepdata.variables.OSDRunPowerShellScriptSourceScript
+            // return decodeURIComponent(escape(window.atob( this.stepdata.variables.OSDRunPowerShellScriptSourceScript )))
+            // getting close, need to remove the LOB character
+            return atob(this.stepdata.variables.OSDRunPowerShellScriptSourceScript)
         }
     }
 }
