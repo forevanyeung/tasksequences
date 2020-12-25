@@ -3,8 +3,8 @@
 
     <!-- <typenotfound v-if="getComponentFromType=='typenotfound'" :type="type" :name="name" :description="description" :data="data"/> -->
     <!-- <component v-else :is="getComponentFromType" /> -->
-    <component :is="getComponentFromType" :stepdata="step" />
-</template>
+    <component :is="getComponentFromType" />
+</template> 
 
 <script> 
 import { defineAsyncComponent } from 'vue';
@@ -13,16 +13,14 @@ export default {
     name: "dynamic-step-loader",
     computed: {
         getComponentFromType() {
-            if(this.$options.components[this.step.type]) {
-                return this.step.type
+            if(this.$options.components[this.stepdata.value.type]) {
+                return this.stepdata.value.type
             } else {
                 return 'typenotfound'
             }
         }
     },
-    props: { 
-        step: Object
-    },
+    inject: ['stepdata'],
     components: { 
         // read into asyncomponent, https://labs.thisdot.co/blog/async-components-in-vue-3
         // DynamicStepComponent: defineAsyncComponent({

@@ -1,5 +1,5 @@
 <template>
-    <common-properties type="Run PowerShell Script" :name="stepdata.name" :description="stepdata.description" />
+    <common-properties type="Run PowerShell Script" :name="stepdata.value.name" :description="stepdata.value.description" />
 
     <li>
         <input type="radio" name="scriptsource"/>
@@ -38,7 +38,7 @@
         <label>PowerShell execution policy:</label>
         <span class="break"></span>
         <select>
-            <option>{{ stepdata.variables.OSDRunPowerShellScriptExecutionPolicy }}</option>
+            <option>{{ stepdata.value.variables?.OSDRunPowerShellScriptExecutionPolicy }}</option>
         </select>
     </li>
 
@@ -53,15 +53,17 @@ export default {
     components: {
         CommonProperties
     },
-    props: {
-        stepdata: Object
-    },
+    inject: ['stepdata'],
     computed: {
         pssourceDecoded() {
             // return this.stepdata.variables.OSDRunPowerShellScriptSourceScript
             // return decodeURIComponent(escape(window.atob( this.stepdata.variables.OSDRunPowerShellScriptSourceScript )))
             // getting close, need to remove the LOB character
-            return atob(this.stepdata.variables.OSDRunPowerShellScriptSourceScript)
+            if(this.stepdata.value.variables?.OSDRunPowerShellScriptSourceScript) {
+                return atob(this.stepdata.value.variables?.OSDRunPowerShellScriptSourceScript)
+            } else {
+                return null
+            }
         }
     }
 }

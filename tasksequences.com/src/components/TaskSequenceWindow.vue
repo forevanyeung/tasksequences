@@ -10,7 +10,7 @@
 
             <div class="content">
                 <ul>
-                    <dynamic-step-loader v-if="stepid" :step="currentstep" />
+                    <dynamic-step-loader v-if="stepid" />
                 </ul>
             </div>
         </div>
@@ -22,6 +22,7 @@ import DynamicStepLoader from './DynamicStepLoader.vue'
 import StepList from './StepList.vue'
 import axios from 'axios'
 import xml2js from 'xml2js'
+import { computed } from 'vue'
 
 export default {
     name: 'TaskSequenceWindow',
@@ -86,45 +87,45 @@ export default {
                 console.log(error);
             });
     },
-    computed: {
-        currentstep() {
-            const search = (id, arr) => {
-                return arr.reduce((a, item) => {
-                    // console.log(item)
-                    if (a) return a;
-                    if (item.id == id) return item;
-                    if (item.$$) return search(id, item.$$);
-                }, null);
-            }
-
-            const step = search(this.stepid, this.steplist_data)
-
-            const kvVarList = (varlist) => {
-                let exVarList = {}
-                varlist.forEach(v => {
-                    // exVarList[v.$.name] = {
-                    //     v,
-                    //     value: v._
-                    // }
-                    exVarList[v.$.name] = v._
-                })
-                return exVarList
-            }
-
-            let stepdata
-            if(step) {
-                stepdata = {
-                    name: step.$.name,
-                    type: step.$.type,
-                    description: step.$.description,
-                    variables: step.$.type === 'group' ? null : kvVarList(step.defaultVarList[0].variable),
+    provide() {
+        return {
+            stepdata: computed(() => {
+                const search = (id, arr) => {
+                    return arr.reduce((a, item) => {
+                        // console.log(item)
+                        if (a) return a;
+                        if (item.id == id) return item;
+                        if (item.$$) return search(id, item.$$);
+                    }, null);
                 }
-            }
 
-            
+                const step = search(this.stepid, this.steplist_data)
 
-            // console.log(stepdata)
-            return stepdata ?? {type: 'notype'}
+                const kvVarList = (varlist) => {
+                    let exVarList = {}
+                    varlist.forEach(v => {
+                        // exVarList[v.$.name] = {
+                        //     v,
+                        //     value: v._
+                        // }
+                        exVarList[v.$.name] = v._
+                    })
+                    return exVarList
+                }
+
+                let stepdata
+                if(step) {
+                    stepdata = {
+                        name: step.$.name,
+                        type: step.$.type,
+                        description: step.$.description,
+                        variables: step.$.type === 'group' ? null : kvVarList(step.defaultVarList[0].variable),
+                    }
+                }
+
+                console.log(stepdata)
+                return stepdata ?? {type: 'notype'}
+            })
         }
     }
 }

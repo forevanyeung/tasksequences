@@ -1,13 +1,11 @@
 <template>
-    <p>Step template not available: {{ stepdata.type }}</p>
-    <p>{{ stepdata.variables }}</p>
+    <p>Step template not available: {{ stepdata.value.type }}</p>
+    <p>{{ stepdata.value.variables }}</p>
 </template>
 
 <script>
 export default {
     name: 'notype',
-    props: {
-        stepdata: Object
-    }
+    inject: ['stepdata'],
 }
 </script>

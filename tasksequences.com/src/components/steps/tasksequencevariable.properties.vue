@@ -1,5 +1,5 @@
 <template>
-    <common-properties type="Set Task Sequence Variable" :name="stepdata.name" :description="stepdata.description"/>
+    <common-properties type="Set Task Sequence Variable" :name="stepdata.value.name" :description="stepdata.value.description"/>
 
     
 </template>
@@ -11,8 +11,6 @@ export default {
     components: {
         commonProperties
     },
-    props: {
-        stepdata: Object
-    }
+    inject: ['stepdata'],
 }
 </script>

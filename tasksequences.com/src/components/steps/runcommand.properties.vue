@@ -1,14 +1,14 @@
 <template>
-    <common-properties type="Run Command Line" :name="stepdata.name" :description="stepdata.description" />
+    <common-properties type="Run Command Line" :name="stepdata.value.name" :description="stepdata.value.description" />
 
     <li>
         <label for="commandline">Command Line:</label> <br />
         <span class="break"></span>
-        <textarea rows="5"></textarea>
+        <textarea rows="5" v-model="stepdata.value.variables.CommandLine"></textarea>
     </li>
 
     <li>
-        <input type="checkbox" name="disable64" />
+        <input type="checkbox" name="disable64" v-model="stepdata.value.variables.SMSTSDisableWow64Redirection" />
         <label for="disable64" class="fullsize">Disable 64-bit file system redirection</label>
     </li>
 
@@ -33,7 +33,7 @@
     </li>
 
     <li class="tworows">
-        <input type="checkbox" />
+        <input type="checkbox" v-model="stepdata.value.variables._SMSTSRunCommandLineAsUser" />
         <label class="fullsize">Run this step as the following account:</label>
         <span class="break"></span>
         <label class="short">Account:</label>
@@ -50,8 +50,6 @@ export default {
     components: {
         CommonProperties
     },
-    props: {
-        stepdata: Object
-    }
+    inject: ['stepdata'],
 }
 </script>

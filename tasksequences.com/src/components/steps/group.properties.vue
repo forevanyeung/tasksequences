@@ -1,5 +1,5 @@
 <template>
-    <CommonProp type="Group" :name="stepdata.name" :description="stepdata.description" />
+    <CommonProp type="Group" :name="stepdata.value.name" :description="stepdata.value.description" />
     <span>No settings are required for this action.</span>
 </template>
 
@@ -11,8 +11,6 @@ export default {
     components: {
         CommonProp
     },
-    props: {
-        stepdata: Object
-    }
+    inject: ['stepdata'],
 }
 </script>

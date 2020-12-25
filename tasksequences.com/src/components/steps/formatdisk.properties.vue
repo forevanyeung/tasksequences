@@ -1,5 +1,5 @@
 <template>
-    <CommonProp type="Format and Partition Disk" :name="stepdata.name" :description="stepdata.description" />
+    <CommonProp type="Format and Partition Disk" :name="stepdata.value.name" :description="stepdata.value.description" />
     <p>Select the physical disk to format and partition. Specify the partition layout to use in the list below. This action overwrites any data on the disk.</p>
 
     <label for="disknumber">Disk number:</label>
@@ -27,8 +27,6 @@ export default {
     components: {
         CommonProp
     },
-    props: {
-        stepdata: Object
-    }
+    inject: ['stepdata'],
 }
 </script>
