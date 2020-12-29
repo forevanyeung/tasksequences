@@ -39,7 +39,7 @@
 <script>
 import commonProperties from './common.properties.vue'
 export default {
-    name: 'restart',
+    name: 'SMS_TaskSequence_RebootAction',
     components: { commonProperties },
     inject: ['stepdata'],
 }

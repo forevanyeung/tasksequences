@@ -19,7 +19,7 @@
 import CommonProperties from './common.properties'
 
 export default {
-    name: 'dynamic-variables',
+    name: 'SMS_TaskSequence_SetDynamicVariablesAction',
     components: {
         CommonProperties
     },

@@ -7,7 +7,7 @@
 import commonProperties from './common.properties'
 
 export default {
-    name: 'tasksequencevariable',
+    name: 'SMS_TaskSequence_SetVariableAction',
     components: {
         commonProperties
     },

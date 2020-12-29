@@ -49,7 +49,7 @@
 import CommonProperties from './common.properties'
 
 export default {
-    name: 'run-powershell',
+    name: 'SMS_TaskSequence_RunPowerShellScriptAction',
     components: {
         CommonProperties
     },

@@ -1,5 +1,5 @@
 <template>
-    <CommonProp type="Check Readiness" :name="stepdata.value.name" :description="stepdata.value.description" />
+    <common-properties type="Check Readiness" :name="stepdata.value.name" :description="stepdata.value.description" />
 
     <p>Select the requirements for this step to succeed.</p>
 
@@ -82,12 +82,12 @@
 </template>
 
 <script>
-import CommonProp from './common.properties.vue'
+import CommonProperties from './common.properties.vue'
 
 export default {
-    name: 'CheckReadiness',
+    name: 'SMS_TaskSequence_PrestartCheckAction',
     components: {
-        CommonProp
+        CommonProperties
     },
     inject: ['stepdata'],
 }

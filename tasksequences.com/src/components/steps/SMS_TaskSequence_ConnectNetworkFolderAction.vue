@@ -25,7 +25,7 @@
 import commonProperties from './common.properties.vue'
 
 export default {
-    name: 'NetworkFolder',
+    name: 'SMS_TaskSequence_ConnectNetworkFolderAction',
     components: {
         commonProperties
     },

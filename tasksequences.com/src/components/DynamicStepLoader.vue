@@ -3,7 +3,7 @@
 
     <!-- <typenotfound v-if="getComponentFromType=='typenotfound'" :type="type" :name="name" :description="description" :data="data"/> -->
     <!-- <component v-else :is="getComponentFromType" /> -->
-    <component :is="getComponentFromType" />
+    <component :is="getComponentFromType" ref="stepObj"/>
 </template> 
 
 <script> 
@@ -21,6 +21,9 @@ export default {
         }
     },
     inject: ['stepdata'],
+    updated() {
+        console.log("sdf", this.$refs)
+    },
     components: { 
         // read into asyncomponent, https://labs.thisdot.co/blog/async-components-in-vue-3
         // DynamicStepComponent: defineAsyncComponent({
@@ -47,12 +50,12 @@ export default {
         SMS_TaskSequence_PrestartCheckAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_PrestartCheckAction.vue')),
         SMS_TaskSequence_SubTasksequence: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_SubTasksequence.vue')),
         
-        // SMS_TaskSequence_InstallApplicationAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_InstallApplicationAction.vue')),
-        // SMS_TaskSequence_InstallSoftwareAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_InstallSoftwareAction.vue')),
-        // SMS_TaskSequence_InstallUpdateAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_InstallUpdateAction.vue')),
-        // SMS_TaskSequence_DownloadPackageContentAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_DownloadPackageContentAction.vue')),
+        SMS_TaskSequence_InstallApplicationAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_InstallApplicationAction.vue')),
+        SMS_TaskSequence_InstallSoftwareAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_InstallSoftwareAction.vue')),
+        SMS_TaskSequence_InstallUpdateAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_InstallUpdateAction.vue')),
+        SMS_TaskSequence_DownloadPackageContentAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_DownloadPackageContentAction.vue')),
         
-        // SMS_TaskSequence_PartitionDiskAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_PartitionDiskAction.vue')),
+        SMS_TaskSequence_PartitionDiskAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_PartitionDiskAction.vue')),
         // SMS_TaskSequence_ConvertDiskAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_ConvertDiskAction.vue')),
         // SMS_TaskSequence_EnableBitLockerAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_EnableBitLockerAction.vue')),
         // SMS_TaskSequence_DisableBitLockerAction: defineAsyncComponent(() => import('./steps/SMS_TaskSequence_DisableBitLockerAction.vue')),

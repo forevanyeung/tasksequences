@@ -34,7 +34,7 @@
 import CommonProperties from './common.properties'
 
 export default {
-    name: 'JoinDomain',
+    name: 'SMS_TaskSequence_JoinDomainWorkgroupAction',
     components: {
         CommonProperties
     },

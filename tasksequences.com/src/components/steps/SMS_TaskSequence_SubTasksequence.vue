@@ -1,5 +1,5 @@
 <template>
-    <CommonProp type="Run Task Sequence" :name="stepdata.value.name" :description="stepdata.value.description" />
+    <common-properties type="Run Task Sequence" :name="stepdata.value.name" :description="stepdata.value.description" />
 
     <li>
         <label>Select task sequence to run:</label>
@@ -8,17 +8,17 @@
 
     <li>
         <input type="text" />
-        <button type="button" />
+        <button type="button">Browse...</button>
     </li>
 </template>
 
 <script>
-import CommonProp from './common.properties.vue'
+import CommonProperties from './common.properties.vue'
 
 export default {
-    name: 'RunTaskSequenceProp',
+    name: 'SMS_TaskSequence_SubTasksequence',
     components: {
-        CommonProp
+        CommonProperties
     },
     inject: ['stepdata'],
 }

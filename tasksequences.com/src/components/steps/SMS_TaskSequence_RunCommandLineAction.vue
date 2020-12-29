@@ -46,7 +46,7 @@
 import CommonProperties from './common.properties.vue'
 
 export default {
-    name: 'RunCommandProp',
+    name: 'SMS_TaskSequence_RunCommandLineAction',
     components: {
         CommonProperties
     },
